@@ -46,7 +46,7 @@ const Head = () => {
   };
   return (
     <div className="grid grid-flow-col m-4 p-4 shadow-lg h-15 ">
-      <div className="flex col-span-2 justify-cente h-full">
+      <div className="flex col-span-2 justify-center h-full">
         <img
           onClick={() => toggleMenuHandler()}
           className="h-8 cursor-pointer"
