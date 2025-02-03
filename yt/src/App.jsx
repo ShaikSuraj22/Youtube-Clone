@@ -6,33 +6,36 @@ import store from "./utils/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./Components/MainContainer";
 import Watchpage from "./Components/Watchpage";
+import { useState } from "react";
 
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <Body />,
-    children: [
-      {
-        path: "/",
-        element: <MainContainer />,
-      },
-      {
-        path: "watch",
-        element: <Watchpage />,
-      },
-    ],
-  },
-]);
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState("");
 
-function App() {
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body />,
+      children: [
+        {
+          path: "/",
+          element: <MainContainer searchQuery={searchQuery} />,
+        },
+        {
+          path: "watch",
+          element: <Watchpage />,
+        },
+      ],
+    },
+  ]);
+
   return (
     <Provider store={store}>
       <div>
-        <Head />
+        <Head setSearchQuery={setSearchQuery} />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>
   );
-}
+};
 
 export default App;
